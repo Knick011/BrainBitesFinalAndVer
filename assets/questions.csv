@@ -1,0 +1,26 @@
+id,category,question,optionA,optionB,optionC,optionD,correctAnswer,explanation,level
+1,Science,What is the chemical symbol for water?,H2O,CO2,O2,NaCl,A,Water is composed of two hydrogen atoms and one oxygen atom - H2O,Easy
+2,Science,Which planet is known as the Red Planet?,Venus,Mars,Jupiter,Saturn,B,Mars appears red due to iron oxide on its surface,Easy
+3,Science,What is photosynthesis?,Process of making food using sunlight,Process of breathing,Process of digestion,Process of reproduction,A,Plants use sunlight to convert carbon dioxide and water into glucose,Easy
+4,Science,What is the speed of light?,299792458 m/s,150000 km/s,1000000 m/s,500000 km/s,A,The speed of light in vacuum is approximately 299792458 meters per second,Hard
+5,Math,What is 2 + 2?,3,4,5,6,B,Basic addition: 2 + 2 = 4,Easy
+6,Math,What is 15% of 200?,20,25,30,35,C,15% of 200 = 0.15 × 200 = 30,Medium
+7,Math,What is the square root of 144?,10,11,12,13,C,√144 = 12 because 12 × 12 = 144,Medium
+8,Math,Solve for x: 2x + 5 = 13,x = 3,x = 4,x = 5,x = 6,B,2x + 5 = 13; 2x = 8; x = 4,Hard
+9,History,In which year did World War II end?,1943,1944,1945,1946,C,World War II ended in 1945 with the surrender of Japan,Easy
+10,History,Who was the first President of the United States?,Thomas Jefferson,George Washington,John Adams,Benjamin Franklin,B,George Washington served as the first U.S. President from 1789 to 1797,Easy
+11,History,When did humans first land on the moon?,1967,1968,1969,1970,C,Apollo 11 landed on the moon on July 20 1969,Medium
+12,History,Which ancient wonder of the world still stands today?,Hanging Gardens,Colossus of Rhodes,Great Pyramid of Giza,Lighthouse of Alexandria,C,The Great Pyramid of Giza is the only ancient wonder still standing,Medium
+13,Geography,What is the capital of France?,London,Berlin,Madrid,Paris,D,Paris has been the capital of France since 987 AD,Easy
+14,Geography,Which is the largest ocean?,Atlantic,Indian,Arctic,Pacific,D,The Pacific Ocean covers about 63 million square miles,Easy
+15,Geography,How many continents are there?,5,6,7,8,C,There are 7 continents: Asia Africa North America South America Antarctica Europe and Australia,Easy
+16,Geography,What is the longest river in the world?,Amazon,Nile,Mississippi,Yangtze,B,The Nile River is approximately 6650 kilometers long,Medium
+17,Literature,Who wrote Romeo and Juliet?,Charles Dickens,William Shakespeare,Mark Twain,Jane Austen,B,William Shakespeare wrote Romeo and Juliet around 1595,Easy
+18,Literature,What is a haiku?,A type of novel,A Japanese poem,A musical instrument,A painting style,B,A haiku is a traditional Japanese poem with 3 lines and 17 syllables,Medium
+19,Technology,What does CPU stand for?,Computer Processing Unit,Central Processing Unit,Core Processing Unit,Computer Power Unit,B,CPU stands for Central Processing Unit - the brain of a computer,Easy
+20,Technology,What is binary code?,Code using 0s and 1s,Programming language,Type of virus,Internet protocol,A,Binary code represents data using only two symbols: 0 and 1,Medium
+21,Sports,How many players are on a basketball team?,4,5,6,7,B,A basketball team has 5 players on the court at one time,Easy
+22,Sports,In which sport would you perform a slam dunk?,Football,Tennis,Basketball,Baseball,C,A slam dunk is a basketball shot where the player jumps and scores by putting the ball directly through the hoop,Easy
+23,Art,Who painted the Mona Lisa?,Michelangelo,Leonardo da Vinci,Pablo Picasso,Vincent van Gogh,B,Leonardo da Vinci painted the Mona Lisa between 1503 and 1519,Medium
+24,Music,How many strings does a standard guitar have?,4,5,6,7,C,A standard guitar has 6 strings: E A D G B E,Easy
+25,General,How many days are in a leap year?,364,365,366,367,C,A leap year has 366 days including February 29th,Easy
