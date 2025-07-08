@@ -11,9 +11,6 @@ import com.facebook.react.defaults.DefaultReactNativeHost;
 import com.facebook.soloader.SoLoader;
 import java.util.List;
 
-// Import notification package
-import com.dieam.reactnativepushnotification.ReactNativePushNotificationPackage;
-
 public class MainApplication extends Application implements ReactApplication {
 
   private final ReactNativeHost mReactNativeHost =
@@ -28,7 +25,7 @@ public class MainApplication extends Application implements ReactApplication {
           @SuppressWarnings("UnnecessaryLocalVariable")
           List<ReactPackage> packages = new PackageList(this).getPackages();
           // Add custom packages here if needed
-          // packages.add(new TimerPackage());
+          packages.add(new TimerPackage());
           return packages;
         }
 
