@@ -9,7 +9,7 @@ import com.facebook.react.defaults.DefaultNewArchitectureEntryPoint;
 import com.facebook.react.defaults.DefaultReactNativeHost;
 import com.facebook.soloader.SoLoader;
 import java.util.List;
-import java.util.Arrays;
+import java.util.ArrayList;
 
 public class MainApplication extends Application implements ReactApplication {
 
@@ -22,10 +22,10 @@ public class MainApplication extends Application implements ReactApplication {
 
         @Override
         protected List<ReactPackage> getPackages() {
-          return Arrays.asList(
-            // Add your packages here
-            new TimerPackage()
-          );
+          List<ReactPackage> packages = new ArrayList<>();
+          // Add custom packages here if needed
+          packages.add(new TimerPackage());
+          return packages;
         }
 
         @Override
