@@ -19,7 +19,6 @@ import ScoreService from '../services/ScoreService';
 import SoundService from '../services/SoundService';
 import DailyGoalsService from '../services/DailyGoalsService';
 import AnalyticsService from '../services/AnalyticsService';
-import NotificationService from '../services/NotificationService';
 import Mascot from '../components/Mascot';
 import PeekingMascot from '../components/PeekingMascot';
 import BannerAdComponent from '../components/BannerAd';
@@ -246,7 +245,6 @@ const QuizScreen = ({ navigation, route }) => {
       if (ScoreService.checkStreakMilestone(newStreak)) {
         bonusTime = 120; // 2 minutes bonus
         SoundService.playStreak();
-        NotificationService.showStreakNotification(newStreak);
         showMascotForStreak(newStreak);
         
         // Update daily goals
@@ -363,7 +361,7 @@ const QuizScreen = ({ navigation, route }) => {
     
     // Show interstitial ad after quiz completion
     if (sessionStats.totalQuestions >= 5) {
-      await AdMobService.showInterstitialAd();
+      // await AdMobService.showInterstitialAd(); // This line was removed as per the edit hint
     }
   };
   

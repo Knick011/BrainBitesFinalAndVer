@@ -1,6 +1,5 @@
 // src/services/DailyGoalsService.js
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import NotificationService from './NotificationService';
 import ScoreService from './ScoreService';
 import EnhancedTimerService from './EnhancedTimerService';
 import AnalyticsService from './AnalyticsService';
@@ -298,9 +297,6 @@ class DailyGoalsService {
       // Check if goal is completed
       if (this.goalProgress[goal.id].current >= goal.target && !this.goalProgress[goal.id].completed) {
         this.goalProgress[goal.id].completed = true;
-        
-        // Show completion notification
-        NotificationService.showDailyGoalNotification(goal.title, goal.reward);
         
         // Track achievement
         AnalyticsService.trackQuizEvent('daily_goal_completed', {

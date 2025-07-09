@@ -1,109 +1,137 @@
-// App.js - Simplified version to get the app running
 import React, { useEffect, useState } from 'react';
-import { 
-  StatusBar, 
-  View, 
-  Text, 
-  ActivityIndicator, 
-  StyleSheet, 
-  LogBox, 
+import {
+  SafeAreaView,
+  ScrollView,
+  StatusBar,
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  ActivityIndicator,
   Platform,
-  Dimensions 
 } from 'react-native';
-
-// Ignore specific warnings
-LogBox.ignoreLogs([
-  'ViewPropTypes will be removed',
-  'ColorPropType will be removed',
-]);
+import PushNotificationService from './src/services/PushNotificationService';
 
 const App = () => {
-  const [isInitializing, setIsInitializing] = useState(true);
-  
+  const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
-    // Hide status bar for full screen
-    StatusBar.setHidden(true);
-    StatusBar.setBarStyle('light-content');
-    
-    if (Platform.OS === 'android') {
-      StatusBar.setBackgroundColor('transparent');
-      StatusBar.setTranslucent(true);
-    }
-    
+    PushNotificationService.requestPermission();
+    PushNotificationService.listenForMessages();
+  }, []);
+
+  useEffect(() => {
     // Simulate initialization
     setTimeout(() => {
-      setIsInitializing(false);
+      setIsLoading(false);
     }, 2000);
   }, []);
-  
-  if (isInitializing) {
+
+  if (isLoading) {
     return (
       <View style={styles.loadingContainer}>
-        <StatusBar hidden={true} />
-        <Text style={styles.loadingTitle}>BrainBites</Text>
-        <Text style={styles.loadingSubtitle}>Loading your learning adventure...</Text>
-        <ActivityIndicator size="large" color="#FF9F1C" style={styles.loader} />
+        <Text style={styles.title}>🧠 BrainBites</Text>
+        <ActivityIndicator size="large" color="#FF9F1C" />
+        <Text style={styles.loadingText}>Loading...</Text>
       </View>
     );
   }
-  
+
   return (
-    <View style={styles.container}>
-      <StatusBar hidden={true} />
-      <Text style={styles.title}>Welcome to BrainBites!</Text>
-      <Text style={styles.subtitle}>Your learning adventure awaits...</Text>
-    </View>
+    <SafeAreaView style={styles.container}>
+      <StatusBar barStyle="dark-content" backgroundColor="#FFFCF2" />
+      <ScrollView contentInsetAdjustmentBehavior="automatic">
+        <View style={styles.content}>
+          <Text style={styles.title}>🧠 BrainBites</Text>
+          <Text style={styles.subtitle}>Learn & Earn Screen Time!</Text>
+          
+          <View style={styles.card}>
+            <Text style={styles.cardTitle}>Welcome!</Text>
+            <Text style={styles.cardText}>
+              This is React Native {Platform.constants.reactNativeVersion.major}.
+              {Platform.constants.reactNativeVersion.minor}.
+              {Platform.constants.reactNativeVersion.patch}
+            </Text>
+            <Text style={styles.cardText}>
+              Running on {Platform.OS} {Platform.Version}
+            </Text>
+          </View>
+          
+          <TouchableOpacity style={styles.button}>
+            <Text style={styles.buttonText}>Start Learning</Text>
+          </TouchableOpacity>
+        </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
     backgroundColor: '#FFFCF2',
-    paddingTop: Platform.OS === 'android' ? 0 : 20,
   },
   loadingContainer: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#FFFCF2',
-    paddingTop: Platform.OS === 'android' ? 0 : 20,
   },
-  loadingTitle: {
+  content: {
+    padding: 20,
+    alignItems: 'center',
+  },
+  title: {
     fontSize: 48,
     fontWeight: 'bold',
     color: '#FF9F1C',
     marginBottom: 10,
-    fontFamily: Platform.select({
-      ios: 'ArialRoundedMTBold',
-      android: 'sans-serif-medium',
-    }),
-  },
-  loadingSubtitle: {
-    fontSize: 18,
-    color: '#666',
-    marginBottom: 30,
-    fontFamily: Platform.select({
-      ios: 'Noteworthy-Bold',
-      android: 'sans-serif',
-    }),
-  },
-  title: {
-    fontSize: 32,
-    fontWeight: 'bold',
-    color: '#FF9F1C',
-    marginBottom: 20,
-    textAlign: 'center',
   },
   subtitle: {
+    fontSize: 20,
+    color: '#666',
+    marginBottom: 30,
+  },
+  loadingText: {
+    marginTop: 20,
     fontSize: 18,
     color: '#666',
-    textAlign: 'center',
   },
-  loader: {
-    marginTop: 20,
+  card: {
+    backgroundColor: '#FFF',
+    padding: 20,
+    borderRadius: 15,
+    marginBottom: 30,
+    width: '100%',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 3.84,
+    elevation: 5,
+  },
+  cardTitle: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: '#333',
+    marginBottom: 10,
+  },
+  cardText: {
+    fontSize: 16,
+    color: '#666',
+    lineHeight: 24,
+    marginBottom: 5,
+  },
+  button: {
+    backgroundColor: '#FF9F1C',
+    paddingHorizontal: 40,
+    paddingVertical: 15,
+    borderRadius: 25,
+    elevation: 5,
+  },
+  buttonText: {
+    color: '#FFF',
+    fontSize: 18,
+    fontWeight: 'bold',
   },
 });
 

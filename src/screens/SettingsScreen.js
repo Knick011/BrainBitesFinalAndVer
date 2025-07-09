@@ -20,7 +20,6 @@ import EnhancedTimerService from '../services/EnhancedTimerService';
 import QuizService from '../services/QuizService';
 import SoundService from '../services/SoundService';
 import ScoreService from '../services/ScoreService';
-import NotificationService from '../services/NotificationService';
 import DailyGoalsService from '../services/DailyGoalsService';
 import AnalyticsService from '../services/AnalyticsService';
 import AdMobService from '../services/AdMobService';
@@ -161,10 +160,6 @@ const SettingsScreen = ({ navigation }) => {
     setNotificationsEnabled(value);
     await AsyncStorage.setItem('brainbites_notifications_enabled', value.toString());
     
-    if (value) {
-      NotificationService.requestPermissions();
-    }
-    
     AnalyticsService.trackSettingsChange('notifications_enabled', value);
   };
   
@@ -181,10 +176,9 @@ const SettingsScreen = ({ navigation }) => {
     await AsyncStorage.setItem('brainbites_daily_reminder', value.toString());
     
     if (value) {
-      NotificationService.scheduleDailyReminder(reminderTime.hour, reminderTime.minute);
+      // NotificationService.scheduleDailyReminder(reminderTime.hour, reminderTime.minute); // Removed
     } else {
-      // Cancel daily reminders
-      NotificationService.cancelAllNotifications();
+      // NotificationService.cancelAllNotifications(); // Removed
     }
     
     AnalyticsService.trackSettingsChange('daily_reminder', value);
@@ -211,7 +205,7 @@ const SettingsScreen = ({ navigation }) => {
     await AsyncStorage.setItem('brainbites_reminder_time', JSON.stringify(newTime));
     
     if (dailyReminder) {
-      NotificationService.scheduleDailyReminder(hour, minute);
+      // NotificationService.scheduleDailyReminder(hour, minute); // Removed
     }
     
     setShowTimePickerModal(false);

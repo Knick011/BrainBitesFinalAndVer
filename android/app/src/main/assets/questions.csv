@@ -1,0 +1,6 @@
+id,category,question,optionA,optionB,optionC,optionD,correctAnswer,explanation,level
+1,Science,What is the chemical symbol for water?,H2O,CO2,O2,NaCl,A,Water is composed of two hydrogen atoms and one oxygen atom - H2O,Easy
+2,Science,Which planet is known as the Red Planet?,Venus,Mars,Jupiter,Saturn,B,Mars appears red due to iron oxide on its surface,Easy
+3,Math,What is 2 + 2?,3,4,5,6,B,Basic addition: 2 + 2 = 4,Easy
+4,Math,What is 15% of 200?,20,25,30,35,C,15% of 200 = 0.15 × 200 = 30,Medium
+5,History,In which year did World War II end?,1943,1944,1945,1946,C,World War II ended in 1945 with the surrender of Japan,Easy

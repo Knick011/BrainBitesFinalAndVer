@@ -1,7 +1,6 @@
 // src/services/HeadlessTimerTask.js
 import { AppRegistry } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import NotificationService from './NotificationService';
 
 const TimerHeadlessTask = async () => {
   try {
@@ -24,13 +23,6 @@ const TimerHeadlessTask = async () => {
     
     // Save updated data
     await AsyncStorage.setItem('brainbites_timer_data', JSON.stringify(data));
-    
-    // Update notification
-    const isNegative = data.availableTime < 0;
-    NotificationService.updatePersistentTimerNotification(
-      data.availableTime,
-      isNegative
-    );
     
   } catch (error) {
     console.error('Error in headless timer task:', error);

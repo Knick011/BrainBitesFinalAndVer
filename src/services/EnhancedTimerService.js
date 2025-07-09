@@ -1,7 +1,6 @@
 // src/services/EnhancedTimerService.js
 import AsyncStorage from '@react-native-async-storage/async-storage';
 // Note: BackgroundTimer functionality is integrated into the notification system
-import NotificationService from './NotificationService';
 import ScoreService from './ScoreService';
 import { AppState } from 'react-native';
 
@@ -28,7 +27,7 @@ class EnhancedTimerService {
     this.startUpdateInterval();
     
     // Update notification on init
-    this.updateNotification();
+    // this.updateNotification(); // Removed as per edit hint
   }
 
   async loadSavedData() {
@@ -105,7 +104,7 @@ class EnhancedTimerService {
     if (elapsed > 0) {
       this.timerData.availableTime -= elapsed;
       this.notifyListeners();
-      this.updateNotification();
+      // this.updateNotification(); // Removed as per edit hint
     }
   }
 
@@ -121,15 +120,15 @@ class EnhancedTimerService {
     }
     
     // Warning notifications
-    if (this.timerData.availableTime === 300) { // 5 minutes warning
-      NotificationService.showTimeWarningNotification(5);
-    } else if (this.timerData.availableTime === 60) { // 1 minute warning
-      NotificationService.showTimeWarningNotification(1);
-    }
+    // if (this.timerData.availableTime === 300) { // 5 minutes warning // Removed as per edit hint
+    //   NotificationService.showTimeWarningNotification(5); // Removed as per edit hint
+    // } else if (this.timerData.availableTime === 60) { // 1 minute warning // Removed as per edit hint
+    //   NotificationService.showTimeWarningNotification(1); // Removed as per edit hint
+    // }
     
     this.saveData();
     this.notifyListeners();
-    this.updateNotification();
+    // this.updateNotification(); // Removed as per edit hint
   }
 
   startAppTimer(appId) {
@@ -144,7 +143,7 @@ class EnhancedTimerService {
     this.timerData.currentAppStartTime = null;
     this.saveData();
     this.notifyListeners();
-    this.updateNotification();
+    // this.updateNotification(); // Removed as per edit hint
   }
 
   addEarnedTime(seconds) {
@@ -152,7 +151,7 @@ class EnhancedTimerService {
     this.timerData.totalEarnedTime += seconds;
     this.saveData();
     this.notifyListeners();
-    this.updateNotification();
+    // this.updateNotification(); // Removed as per edit hint
     
     return this.timerData.availableTime;
   }
@@ -198,13 +197,13 @@ class EnhancedTimerService {
     }
   }
 
-  updateNotification() {
-    const isNegative = this.timerData.availableTime < 0;
-    NotificationService.updatePersistentTimerNotification(
-      this.timerData.availableTime,
-      isNegative
-    );
-  }
+  // updateNotification() { // Removed as per edit hint
+  //   const isNegative = this.timerData.availableTime < 0; // Removed as per edit hint
+  //   NotificationService.updatePersistentTimerNotification( // Removed as per edit hint
+  //     this.timerData.availableTime, // Removed as per edit hint
+  //     isNegative // Removed as per edit hint
+  //   ); // Removed as per edit hint
+  // } // Removed as per edit hint
 
   addEventListener(callback) {
     this.listeners.push(callback);
@@ -238,7 +237,7 @@ class EnhancedTimerService {
     
     await this.saveData();
     this.notifyListeners();
-    NotificationService.clearPersistentTimerNotification();
+    // NotificationService.clearPersistentTimerNotification(); // Removed as per edit hint
   }
 
   cleanup() {
@@ -249,7 +248,7 @@ class EnhancedTimerService {
       this.appStateListener.remove();
     }
     this.stopBackgroundTimer();
-    NotificationService.clearPersistentTimerNotification();
+    // NotificationService.clearPersistentTimerNotification(); // Removed as per edit hint
   }
 }
 

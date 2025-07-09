@@ -2,12 +2,13 @@ apply plugin: "com.android.application"
 apply plugin: "com.facebook.react"
 
 android {
-    compileSdkVersion 35
+    namespace "com.brainbites"
+    compileSdkVersion 34
     
     defaultConfig {
         applicationId "com.brainbites"
-        minSdkVersion 24
-        targetSdkVersion 35
+        minSdkVersion 21
+        targetSdkVersion 34
         versionCode 1
         versionName "1.0"
     }
@@ -26,11 +27,10 @@ android {
         }
         release {
             signingConfig signingConfigs.debug
-            minifyEnabled project.hasProperty('android.enableProguardInReleaseBuilds') ? project.getProperty('android.enableProguardInReleaseBuilds').toBoolean() : false
+            minifyEnabled false
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
     }
-    namespace 'com.brainbites'
 }
 
 dependencies {
@@ -38,11 +38,15 @@ dependencies {
     
     if (hermesEnabled.toBoolean()) {
         implementation("com.facebook.react:hermes-android")
-    } else {
-        implementation jscFlavor
     }
+    
+    // Firebase Analytics
+    implementation platform('com.google.firebase:firebase-bom:32.7.4')
+    implementation 'com.google.firebase:firebase-analytics'
     
     // Vector Icons
     implementation project(':react-native-vector-icons')
 }
 
+apply plugin: 'com.google.gms.google-services'
+apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"

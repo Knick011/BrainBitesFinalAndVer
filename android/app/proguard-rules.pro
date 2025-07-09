@@ -39,9 +39,6 @@
 -keepattributes Signature
 -keepattributes *Annotation*
 
-# Push Notifications
--keep class com.dieam.reactnativepushnotification.** { *; }
-
 # Vector Icons
 -keep class com.horcrux.svg.** {*;}
 
